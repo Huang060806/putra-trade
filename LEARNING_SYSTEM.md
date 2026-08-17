@@ -28,8 +28,20 @@
 | System Design | 0 | 未接触 |
 | Frontend Basics | 0 | 未接触 |
 
-### 最新一条学习记录
-*（等待今日学习记录）*
+### 学习记录
+
+#### 2026-08-18
+- **Topic**: HTTP协议 → SpringBoot Web案例 → 三层架构 → IOC/DI入门
+- **Course**: 黑马程序员 Web基础 — Spring Boot Web 案例
+- **What I learned**:
+  - HTTP协议（请求/响应格式）
+  - SpringBoot Web 案例实战
+  - 三层架构（Controller / Service / Repository）
+  - IOC（控制反转）和 DI（依赖注入）入门概念
+- **What I implemented**: *（待补充）*
+- **Problems**: *（待补充）*
+- **Confidence**: HTTP=3, Spring Boot Web=2, 三层架构=2, IOC/DI=1
+- **Next step**: IOC/DI 深入 + 动手写代码验证理解
 
 ---
 
@@ -41,11 +53,12 @@
 | Data Structures | 2 | — | 已知基础，待验证扎实程度 |
 | SQL | 2 | — | 已知基础，待验证扎实程度 |
 | Git/GitHub | 2 | — | 已知基础，待验证扎实程度 |
-| Spring Boot | 1 | — | 正在学习黑马课程 |
-| HTTP / REST API | 1 | — | 随课程推进 |
-| Controller/Service/Repository | 1 | — | 随课程推进 |
+| HTTP / REST API | 3 | 2026-08-18 | 学完HTTP协议，能解释请求/响应 |
+| Spring Boot | 2 | 2026-08-18 | 完成Web案例，开始IOC/DI |
+| Controller/Service/Repository | 2 | 2026-08-18 | 学完三层架构 |
 | MySQL | 2 | — | 已有基础 |
 | MyBatis / JPA | 1 | — | 随课程推进 |
+| IOC / DI | 1 | 2026-08-18 | 入门，待实践验证 |
 | Redis | 0 | — | 未接触 |
 | Testing | 0 | — | 未接触 |
 | Docker / Deployment | 0 | — | 未接触 |
