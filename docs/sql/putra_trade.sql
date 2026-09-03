@@ -239,6 +239,23 @@ CREATE TABLE sensitive_word (
     UNIQUE KEY uk_word (word)
 ) ENGINE=InnoDB COMMENT='敏感词库(发布时DFA自动过滤)';
 
+-- ------------------------------------------------------------
+-- 13. 私聊消息表 chat_message
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS chat_message;
+CREATE TABLE chat_message (
+    id          BIGINT       NOT NULL AUTO_INCREMENT COMMENT '主键',
+    sender_id   BIGINT       NOT NULL                COMMENT '发送人id',
+    receiver_id BIGINT       NOT NULL                COMMENT '接收人id',
+    item_id     BIGINT                                COMMENT '关联商品id(从商品页发起时记录)',
+    content     VARCHAR(500) NOT NULL                COMMENT '消息内容',
+    is_read     TINYINT      NOT NULL DEFAULT 0      COMMENT '是否已读: 1已读 0未读',
+    create_time DATETIME     NOT NULL                COMMENT '发送时间',
+    PRIMARY KEY (id),
+    KEY idx_pair (sender_id, receiver_id, create_time),
+    KEY idx_receiver_read (receiver_id, is_read)
+) ENGINE=InnoDB COMMENT='一对一私聊消息';
+
 -- ============================================================
 -- 初始数据
 -- ============================================================

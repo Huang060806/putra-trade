@@ -32,6 +32,7 @@
         <van-button icon="star" :type="item.favorited ? 'warning' : 'default'" size="small" @click="toggleFavorite">
           {{ item.favorited ? '已收藏' : '收藏' }}
         </van-button>
+        <van-button size="small" @click="chat" :disabled="item.sellerId === myId">私聊</van-button>
         <van-button type="warning" size="small" style="flex:1" @click="want" :disabled="item.status !== 1">
           {{ item.wanted ? '已想要' : '我想要' }}
         </van-button>
@@ -74,7 +75,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { showToast, showSuccessToast } from 'vant'
 import request from '../api'
-import { getToken } from '../utils/auth'
+import { getToken, getUser } from '../utils/auth'
 
 const route = useRoute()
 const router = useRouter()
@@ -84,6 +85,7 @@ const contact = ref({})
 const reportVisible = ref(false)
 const reportReason = ref('')
 const buyVisible = ref(false)
+const myId = getUser()?.id
 const spots = ref([])
 const selectedSpot = ref(null)
 
@@ -121,6 +123,11 @@ const toggleFavorite = async () => {
     item.value.favorited = true
     showSuccessToast('已收藏')
   }
+}
+
+const chat = () => {
+  if (needLogin()) return
+  router.push(`/chat/${item.value.sellerId}?itemId=${item.value.id}`)
 }
 
 const buy = async () => {

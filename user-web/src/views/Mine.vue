@@ -9,6 +9,7 @@
       <van-cell title="我想要的" is-link to="/want" icon="star-o" />
       <van-cell title="我的收藏" is-link to="/favorite" icon="like-o" />
       <van-cell title="我的订单" is-link to="/orders" icon="orders-o" />
+      <van-cell title="我的私聊" is-link to="/chats" icon="chat-o" />
       <van-cell title="面交地点管理" is-link to="/mine/spots" icon="location-o" />
       <van-cell title="个人资料设置" is-link to="/mine/profile" icon="setting-o" />
     </van-cell-group>
