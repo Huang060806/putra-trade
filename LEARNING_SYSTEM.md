@@ -7,7 +7,7 @@
 - **目标**: 成为 Java Backend Engineer，具备实习申请能力
 - **当前主线**: 黑马程序员 Web基础 — Spring Boot Web 案例课程
 - **学习风格问题**: 看课能懂，缺编码练习和项目实践
-- **GitHub**: https://github.com/Huang060806/TestProject
+- **GitHub**: https://github.com/Huang060806/putra-trade
 - **MySQL**: 官方安装版 9.7.2（`/usr/local/mysql`，开机自启；root 密码为安装时设置。2026-08-23 已排查并卸载了端口冲突的 Homebrew 版）
 
 ### 已接触的基础知识
