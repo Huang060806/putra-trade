@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.putra.trade.server.mapper.ItemMapper">
+
+    <update id="update">
+        UPDATE item
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="categoryId != null">category_id = #{categoryId},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="originalPrice != null">original_price = #{originalPrice},</if>
+            <if test="conditionLevel != null">condition_level = #{conditionLevel},</if>
+            <if test="cover != null">cover = #{cover},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="campusArea != null">campus_area = #{campusArea},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="auditRemark != null">audit_remark = #{auditRemark},</if>
+            update_time = NOW(),
+            update_user = #{updateUser},
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="pageQuery" resultType="com.putra.trade.pojo.vo.ItemDetailVO">
+        SELECT i.*, m.nickname AS sellerNickname, m.avatar AS sellerAvatar, c.name AS categoryName
+        FROM item i
+        LEFT JOIN member m ON i.seller_id = m.id
+        LEFT JOIN category c ON i.category_id = c.id
+        <where>
+            <if test="status != null">AND i.status = #{status}</if>
+            <if test="sellerId != null">AND i.seller_id = #{sellerId}</if>
+            <if test="categoryId != null">AND i.category_id = #{categoryId}</if>
+            <if test="campusArea != null and campusArea != ''">AND i.campus_area = #{campusArea}</if>
+            <if test="keyword != null and keyword != ''">
+                AND (i.title LIKE CONCAT('%', #{keyword}, '%') OR i.description LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+        </where>
+        <choose>
+            <when test="sortBy == 'price_asc'">ORDER BY i.price ASC</when>
+            <when test="sortBy == 'price_desc'">ORDER BY i.price DESC</when>
+            <when test="sortBy == 'hot'">ORDER BY i.want_count DESC, i.create_time DESC</when>
+            <otherwise>ORDER BY i.create_time DESC</otherwise>
+        </choose>
+    </select>
+</mapper>

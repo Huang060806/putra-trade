@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.putra.trade</groupId>
+        <artifactId>putra-trade</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>putra-trade-common</artifactId>
+    <name>Putra Trade Common</name>
+    <description>通用模块：统一返回结果、常量、异常、工具类</description>
+
+    <dependencies>
+        <!-- JWT 签发/解析工具 -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
+        <!-- BCrypt 密码加密 -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+        </dependency>
+        <!-- JwtProperties 需要 Spring 配置注入 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <!-- Jackson JSR310：LocalDateTime 序列化 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+    </dependencies>
+</project>

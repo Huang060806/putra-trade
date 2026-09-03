@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.putra.trade</groupId>
+        <artifactId>putra-trade</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>putra-trade-pojo</artifactId>
+    <name>Putra Trade Pojo</name>
+    <description>实体模块：Entity、DTO、VO</description>
+
+    <dependencies>
+        <!-- Swagger 注解（@ApiModelProperty 在 openapi3 中为 @Schema） -->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>2.2.20</version>
+        </dependency>
+        <!-- DTO 参数校验注解（@NotBlank 等） -->
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+    </dependencies>
+</project>

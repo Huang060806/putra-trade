@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.putra.trade.server.mapper.MemberMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO member (student_no, email, password, nickname, avatar, gender, phone,
+                            wechat, whatsapp, dorm_area, ban_publish, ban_chat, status,
+                            create_time, update_time)
+        VALUES (#{studentNo}, #{email}, #{password}, #{nickname}, #{avatar}, #{gender}, #{phone},
+                #{wechat}, #{whatsapp}, #{dormArea}, #{banPublish}, #{banChat}, #{status},
+                #{createTime}, #{updateTime})
+    </insert>
+
+    <update id="update">
+        UPDATE member
+        <set>
+            <if test="nickname != null and nickname != ''">nickname = #{nickname},</if>
+            <if test="avatar != null and avatar != ''">avatar = #{avatar},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="wechat != null">wechat = #{wechat},</if>
+            <if test="whatsapp != null">whatsapp = #{whatsapp},</if>
+            <if test="dormArea != null">dorm_area = #{dormArea},</if>
+            update_time = #{updateTime},
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateBan">
+        UPDATE member
+        <set>
+            <if test="banPublish != null">ban_publish = #{banPublish},</if>
+            <if test="banChat != null">ban_chat = #{banChat},</if>
+            <if test="status != null">status = #{status},</if>
+            update_time = NOW(),
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="pageAdmin" resultType="com.putra.trade.pojo.entity.Member">
+        SELECT * FROM member
+        <where>
+            <if test="keyword != null and keyword != ''">
+                AND (student_no LIKE CONCAT('%', #{keyword}, '%') OR nickname LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+</mapper>
